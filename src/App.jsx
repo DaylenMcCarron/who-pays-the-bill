@@ -7,9 +7,9 @@ import './style/app.css';
 import Stage1 from './components/stage_one'
 import Stage2 from './components/stage_two'
 
+
 const App = () => {
   const context = useContext(MyContext)
-  console.log(context)
 
   return (
     <div className='wrapper'>

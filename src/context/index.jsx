@@ -7,6 +7,13 @@ const MyProvider = (props) => {
     const [players,setPlayers] = useState([])
     const [result, setResult] = useState('')
 
+    const addPlayerHandler = (name) => {
+        setPlayers(prevState => ([
+            ...prevState,
+            name
+        ]))
+    }
+
 
     return(
 
@@ -16,6 +23,7 @@ const MyProvider = (props) => {
             players:players,
             result:result,
             // Methods
+            addPlayer:addPlayerHandler,
         }}>
             {props.children}
         </MyContext.Provider>
