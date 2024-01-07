@@ -75,7 +75,7 @@ const Stage1 = () => {
                                         list-group-item-action">
                                             {player}
                                             <span className="badge badge-danger"
-                                            onClick={() =>alert('delete')}>
+                                            onClick={() => context.removePlayer(idx)}>
                                                 X
                                             </span>
                                         </li>
