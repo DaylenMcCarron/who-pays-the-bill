@@ -2,23 +2,39 @@ import { Button, Form, Alert } from "react-bootstrap";
 import { useRef } from "react";
 
 import { MyContext } from "../context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Stage1 = () => {
 
     const textInput = useRef();
     const context = useContext(MyContext);
+    const [error, setError] = useState([false,'']);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const value = textInput.current.value;
+        const validate = validateInput(value);
 
         // Run Validation
         // add to list
         
+        if(validate){
+            setError([false,'']);
+            context.addPlayer(value)
+            textInput.current.value = '';
+        }
+    }
 
-        context.addPlayer(value)
-        textInput.current.value = '';
+    const validateInput = (value) => {
+        if(value === '') {
+            setError([true,'Sorry, you need to add something']);
+            return false;
+        }
+        if(value.length <= 2) {
+            setError([true,'Sorry, you need to enter atleast 3 characters']);
+            return false;
+        }
+        return true;
     }
     
     console.log(context)
@@ -35,7 +51,13 @@ const Stage1 = () => {
                     />
                 </Form.Group>
 
-                    {/* {Show Errors} */}
+                    {
+                        error[0] ? 
+                            <Alert>
+                                {error[1]}
+                            </Alert>
+                        : null
+                    }
 
                 <Button className="miami" variant="primary" type="submit">
                     Add player
