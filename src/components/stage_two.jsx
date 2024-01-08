@@ -12,6 +12,14 @@ const Stage2 = () => {
                 <h3>Loser is: </h3>
                 {context.result}
             </div>
+            <div className="action_button"
+                onClick={()=> context.resetGame()}
+            > START OVER
+            </div>
+            <div className="action_button btn_2"
+                onClick={()=> context.getNewLoser()}
+            > NEW LOSER
+            </div>
         </>
     )
 }

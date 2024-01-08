@@ -7,6 +7,8 @@ import './style/app.css';
 import Stage1 from './components/stage_one'
 import Stage2 from './components/stage_two'
 
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const App = () => {
   const context = useContext(MyContext)
